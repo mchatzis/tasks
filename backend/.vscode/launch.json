@@ -1,0 +1,65 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Django: Runserver",
+        "type": "python",
+        "request": "launch",
+        "program": "${workspaceFolder}/manage.py",
+        "envFile": "${workspaceFolder}/.env.example",
+        "args": ["runserver"],
+        "django": true,
+        "justMyCode": true
+      },
+      {
+        "name": "Shell",
+        "type": "python",
+        "request": "launch",
+        "program": "${workspaceFolder}/manage.py",
+        "envFile": "${workspaceFolder}/.env.example",
+        "args": ["shell"],
+        "justMyCode": true
+      },
+      {
+        "name": "Make migrations",
+        "type": "python",
+        "request": "launch",
+        "program": "${workspaceFolder}/manage.py",
+        "envFile": "${workspaceFolder}/.env.example",
+        "args": ["makemigrations"],
+        "justMyCode": true
+      },
+      {
+        "name": "Migrate",
+        "type": "python",
+        "request": "launch",
+        "program": "${workspaceFolder}/manage.py",
+        "envFile": "${workspaceFolder}/.env.example",
+        "args": [
+          "migrate"
+          // "authsystem",
+          // "zero"
+        ],
+        "justMyCode": true
+      },
+      {
+        "name": "Debug",
+        "type": "python",
+        "request": "attach",
+        "connect": {
+          "host": "localhost",
+          "port": 5678
+        },
+        "pathMappings": [
+          {
+            "localRoot": "${workspaceFolder}",
+            "remoteRoot": "/home/seazone/web"
+          }
+        ],
+        "justMyCode": false
+      }
+    ]
+}

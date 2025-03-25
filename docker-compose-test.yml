@@ -1,0 +1,26 @@
+services:
+  backend:
+    user: root
+    image: backend
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    command: [ "sh", "-c", "pip install debugpy -t /tmp && python /tmp/debugpy --listen 0.0.0.0:5678 manage.py runserver 0.0.0.0:8000" ]
+    volumes:
+      - ./backend:/home/company/backend
+    ports:
+      - "8000:8000"
+      - "5678:5678"
+    env_file:
+      - ./backend/.env.example
+
+  frontend:
+    image: frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    volumes:
+      - /app/node_modules # preserve Linux-built node_modules to avoid conflicts for MacOS ARM architecture users
+      - ./frontend/frontend:/app
+    ports:
+      - "5173:5173"
